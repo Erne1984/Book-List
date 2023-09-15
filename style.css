@@ -1,0 +1,46 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing:border-box;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 95vh;
+}
+
+.box{
+    height: 200px;
+}
+
+.box-data{
+    width: 100%;
+}
+
+.box-data .data{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding-top: 5px;
+}
+
+.box-data .data .icons{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 6px;
+}
+
+.box-data .data .icons .editar:hover{
+    color: lightslategray;
+    cursor: pointer;
+}
+
+.box-data .data .icons .lixeira:hover{
+    color: rgb(251, 61, 18);
+    cursor: pointer;
+}

@@ -5,29 +5,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Crud</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/7be8865753.js" crossorigin="anonymous"></script>
 
-    <style>
-        #main {
-            height: 50px;
-        }
-    </style>
+
 </head>
 
 <body>
 
-    <main>
-        <h1>Livros que você leu este ano!</h1>
+    <main class="container">
+
+        <section class="box">
+            <div class="box-forms">
+                <h1>Livros que você leu este ano!</h1>
 
 
-        <input type="text" placeholder="Insira um livro" id="inputLivro">
+                <input type="text" placeholder="Insira um livro" id="inputLivro">
 
-        <input type="submit" id="btnPostar" value="Postar">
-        <input type="submit" id="btnExcluir" value="Excluir">
+                <input type="submit" id="btnPostar" value="Postar">
+                <input type="submit" id="btnExcluir" value="Excluir">
+            </div>
 
 
-        <div id="main">
+            <div class="box-data" id="box-data">
+                <span class="data" id="data"> 
+                    <span class="icons">
+                        <div class="editar"><i class="fa-regular fa-pen-to-square"></i></div>
+                        <div class="lixeira"><i class="fa-solid fa-trash-can"></i></div>
+                    </span>
+                </span>
+            </div>
 
-        </div>
+        </section>
 
     </main>
 
