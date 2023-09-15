@@ -1,12 +1,21 @@
 const livros = [];
 
-const inputTitulo = document.querySelector("#inputLivro")
+let livroId = 1; 
+
+const inputTitulo = document.querySelector("#inputLivro");
+const inputAutor = document.querySelector("#inputAutor");
 const btnPost = document.querySelector("#btnPostar");
 const btnExcluir = document.querySelector("#btnExcluir");
+const btnLixeira = document.querySelectorAll(".lixeira");
 const divMain = document.querySelector("#box-data");
 
-function criaLivro(titulo) {
-  livros.push(titulo);
+function criaLivro(titulo, autor) {
+  const livro = {
+    id: livroId++,
+    titulo: titulo,
+    autor: autor,
+  };
+  livros.push(livro);
 }
 
 function listarLivros(array) {
@@ -14,28 +23,44 @@ function listarLivros(array) {
   array.forEach(element => {
     const newLine = document.createElement('span');
     newLine.innerHTML = `
-    <span class="data">${element}
+    <span class="data">${element.titulo} (Autor: ${element.autor})
     <span class="icons">
       <div class="editar"><i class="fa-regular fa-pen-to-square"></i></div>
       <div class="lixeira"><i class="fa-solid fa-trash-can"></i></div>
     </span>
     </span>
-    <br>
     `;
+
+    // Evento relacionado com a lixeira
+    const lixeira = newLine.querySelector(".lixeira");
+    lixeira.addEventListener("click", () => {
+      console.log("Lixeira foi clicada!");
+    });
+
     divMain.appendChild(newLine);
   });
 }
 
-function removerLivro(array) {
+function removerUltimoLivro(array) {
   array.pop();
 }
 
+function removerLivroEspecifico() {
+  const data = document.querySelectorAll(".data");
+
+  data.forEach(element => {
+    console.log(element);
+  });
+}
+
 btnPost.addEventListener('click', () => {
-  criaLivro(inputTitulo.value);
+  criaLivro(inputTitulo.value, inputAutor.value); 
   listarLivros(livros);
+  inputTitulo.value = ""; 
+  inputAutor.value = ""; 
 });
 
 btnExcluir.addEventListener('click', () => {
-  removerLivro(livros);
+  removerUltimoLivro(livros);
   listarLivros(livros);
 });
