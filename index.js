@@ -1,6 +1,8 @@
 const livros = [];
+let livroId = 1;
+let idBtnLixeira = 1;
+let idBtnEditar = 1;
 
-let livroId = 1; 
 
 const inputTitulo = document.querySelector("#inputLivro");
 const inputAutor = document.querySelector("#inputAutor");
@@ -34,8 +36,10 @@ function listarLivros(array) {
     // Evento relacionado com a lixeira
     const lixeira = newLine.querySelector(".lixeira");
     lixeira.addEventListener("click", () => {
-      console.log("Lixeira foi clicada!");
-    });
+      console.log(`Clicou na lixeira ${element.id}`)
+      removerLivroEspecifico(array, element.id - 1);
+      listarLivros(array);
+    })
 
     divMain.appendChild(newLine);
   });
@@ -45,19 +49,18 @@ function removerUltimoLivro(array) {
   array.pop();
 }
 
-function removerLivroEspecifico() {
-  const data = document.querySelectorAll(".data");
-
-  data.forEach(element => {
-    console.log(element);
-  });
+function removerLivroEspecifico(array, index) {
+  if (index >= 0 && index < array.length) {
+    array.splice(index, 1); 
+  }
 }
 
+
 btnPost.addEventListener('click', () => {
-  criaLivro(inputTitulo.value, inputAutor.value); 
+  criaLivro(inputTitulo.value, inputAutor.value);
   listarLivros(livros);
-  inputTitulo.value = ""; 
-  inputAutor.value = ""; 
+  inputTitulo.value = "";
+  inputAutor.value = "";
 });
 
 btnExcluir.addEventListener('click', () => {
